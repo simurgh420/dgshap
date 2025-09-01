@@ -1,0 +1,36 @@
+# پوشه‌های وابستگی و خروجی
+node_modules/
+.next/
+out/
+dist/
+build/
+
+# فایل‌های محیطی و تنظیمات
+.env
+.env.local
+.env.development
+.env.production
+
+# فایل‌های استاتیک و رسانه‌ای
+public/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.webp
+*.ico
+
+# فایل‌های لاگ و فشرده
+*.log
+*.zip
+*.tar
+*.gz
+
+# فایل‌های minified یا auto-generated
+*.min.js
+*.min.css
+
+# فایل‌های خاص که نمی‌خوای فرمت بشن
+README.md
+CHANGELOG.md
