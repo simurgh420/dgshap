@@ -23,8 +23,8 @@ const eslintConfig = [
   {
     rules: {
       "no-console": "warn",
-       '@typescript-eslint/no-explicit-any': 'warn',
-       "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-unused-vars": "warn",
     },
   },
 ];
