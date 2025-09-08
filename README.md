@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 DGShop – Ecommerce Sample Project
 
-## Getting Started
+یک فروشگاه اینترنتی مدرن ساخته شده با **Next.js 15** که تکنولوژی‌های Fullstack و بهینه‌سازی SEO را ترکیب کرده است.  
+این پروژه به عنوان نمونه‌کار حرفه‌ای برای رزومه توسعه داده شده است.  
 
-First, run the development server:
+🔗 **دمو آنلاین:** [DGShop on Vercel](https://dgshap-nxtcwvrta-simurghs-projects.vercel.app/)  
+
+---
+
+## ✨ ویژگی‌ها
+
+- ⚡ **Next.js 15 (App Router)** – رندر سمت سرور و client-side routing  
+- 🌐 **داینامیک روت‌ها** – صفحات محصول و جزئیات پویا  
+- 🎨 **Tailwind CSS v4 + shadcn/ui** – استایل مدرن و سریع  
+- 🔑 **Clerk Authentication** – ثبت‌نام/ورود و محافظت مسیرها  
+- 🗄️ **Prisma ORM + PostgreSQL** – مدیریت دیتابیس با کوئری‌های بهینه  
+- 📝 **React Hook Form + Zod** – مدیریت فرم‌ها با اعتبارسنجی پیشرفته  
+- 🔄 **Server Actions + useActionState** – مدیریت فرم‌ها و عملیات CRUD  
+- 📦 **سبد خرید (Cart)** با **React Query** برای کشینگ و state management  
+- 🖼️ آپلود چند عکس برای محصول  
+- ♻️ **ISR / Revalidation** برای تازه‌سازی بدون ری‌بیلد کامل  
+- 🚀 **بهینه‌سازی SEO** – meta tags، title، description و structured data  
+- 🌐 **دیپلوی روی Vercel**  
+
+---
+
+## 🛠️ تکنولوژی‌ها
+
+- [Next.js 15](https://nextjs.org/)  
+- [TypeScript](https://www.typescriptlang.org/)  
+- [Prisma ORM](https://www.prisma.io/)  
+- [PostgreSQL](https://www.postgresql.org/)  
+- [React Hook Form](https://react-hook-form.com/)  
+- [Zod](https://zod.dev/) – مدیریت اعتبارسنجی فرم‌ها  
+- [useActionState (Next.js Server Actions)](https://beta.nextjs.org/docs/routing/server-actions)  
+- [React Query](https://tanstack.com/query/latest) – مدیریت state و کش سبد خرید  
+- [Clerk Auth](https://clerk.com/)  
+- [Tailwind CSS v4](https://tailwindcss.com/)  
+- [shadcn/ui](https://ui.shadcn.com/)  
+
+---
+
+## 📂 ساختار پوشه‌ها
 
 ```bash
+src/
+├── app/                
+│   ├── api/            # API Routes (product, cart)
+│   ├── dashboard/      # صفحات مدیریت محصول (محافظت‌شده با Clerk)
+│   └── (auth)/         # مسیرهای مربوط به Clerk (sign-in, sign-up)
+│
+├── components/         
+│   └── ui/             
+│
+├── lib/                # پیکربندی‌ها (Prisma, utils, Clerk server helpers)
+├── styles/             
+└── prisma/             # فایل schema.prisma
+# کلون پروژه
+git clone https://github.com/USERNAME/dgshop.git
+
+cd dgshop
+
+# نصب پکیج‌ها
+npm install
+
+# ساخت Prisma Client
+npx prisma generate
+
+# اجرای سرور توسعه
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DBNAME"
+NEXT_PUBLIC_BASE_URL="http://localhost:3000"
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Clerk
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_publishable_key
+CLERK_SECRET_KEY=your_secret_key
+📌 درباره
+این پروژه به عنوان نمونه‌کار توسط Simurgh ساخته شده است.
+برای مشاهده سایر نمونه‌کارها و همکاری:
 
-## Learn More
+[GitHub](https://github.com/simurgh420)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+ایمیل: mohamadrezah420@gmail.com
