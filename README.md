@@ -54,7 +54,9 @@ npx prisma generate
 npm run dev
 
 
+
 DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DBNAME"
+
 NEXT_PUBLIC_BASE_URL="http://localhost:3000"
 
 # Clerk
