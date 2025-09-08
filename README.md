@@ -39,22 +39,6 @@
 - [shadcn/ui](https://ui.shadcn.com/)  
 
 ---
-
-## 📂 ساختار پوشه‌ها
-
-```bash
-src/
-├── app/                
-│   ├── api/            # API Routes (product, cart)
-│   ├── dashboard/      # صفحات مدیریت محصول (محافظت‌شده با Clerk)
-│   └── (auth)/         # مسیرهای مربوط به Clerk (sign-in, sign-up)
-│
-├── components/         
-│   └── ui/             
-│
-├── lib/                # پیکربندی‌ها (Prisma, utils, Clerk server helpers)
-├── styles/             
-└── prisma/             # فایل schema.prisma
 # کلون پروژه
 git clone https://github.com/USERNAME/dgshop.git
 
