@@ -10,5 +10,5 @@ function ProductList({ products }: { products: ProductsWithImages[] }) {
       })}
     </div>
   );
-} 
+}
 export default ProductList;

@@ -10,7 +10,7 @@ async function layout({
   const user = await currentUser();
   const isAdmin = user?.privateMetadata?.isAdmin;
   if (!isAdmin) redirect('/');
-  return <div>{children}</div>; 
+  return <div>{children}</div>;
 }
 
 export default layout;

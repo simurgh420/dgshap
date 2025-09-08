@@ -9,7 +9,7 @@ import {
   Card,
   CardContent,
 } from '@/components/ui/';
-import img1 from './image/1.webp';
+import img1 from './image/1.png';
 import img2 from './image/2.png';
 import img3 from './image/3.jpg';
 import img4 from './image/4.webp';

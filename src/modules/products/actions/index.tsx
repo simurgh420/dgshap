@@ -1,7 +1,7 @@
 'use server';
 
 import { prisma } from '@/lib/prisma';
-import { Product, ProductCategory } from '@/generated/prisma';
+import { Product, ProductCategory } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 

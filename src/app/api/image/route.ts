@@ -71,7 +71,7 @@ export async function GET(req: NextRequest) {
         status: 400,
       },
     );
-  } else { 
+  } else {
     const images = await prisma.image.findMany({
       where: { productId: productId },
     });
@@ -82,8 +82,8 @@ export async function GET(req: NextRequest) {
     // get productImage
   }
 }
-  
-export async function DELETE(req: NextRequest) { 
+
+export async function DELETE(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const imageId = searchParams.get('imageId');
   if (!imageId) {

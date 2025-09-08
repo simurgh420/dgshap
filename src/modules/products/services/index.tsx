@@ -1,5 +1,5 @@
 'use server';
-import { Product } from '@/generated/prisma';
+import { Product } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { revalidatePath } from 'next/cache';
 
@@ -29,7 +29,7 @@ export const getProductById = async (id: string) => {
 export const upsertProduct = async (product: Product) => {
   const { id, ...data } = product;
   if (id) {
-    const res = await fetch('/api/product', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/product`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id, ...data }),
@@ -37,7 +37,7 @@ export const upsertProduct = async (product: Product) => {
     if (!res.ok) throw new Error('Update failed');
     return res.json();
   } else {
-    const res = await fetch('/api/product', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/product`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),

@@ -1,5 +1,3 @@
-
-
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { currentUser } from '@clerk/nextjs/server';
@@ -10,10 +8,10 @@ export async function GET(req: NextRequest) {
   if (userId) {
     const cartItem = await prisma.cartItem.findMany({
       where: { userId },
-      include: { 
-        product: { 
-          include: { images: true } 
-        } 
+      include: {
+        product: {
+          include: { images: true },
+        },
       },
     });
     return NextResponse.json(cartItem);
@@ -30,7 +28,7 @@ export async function POST(req: NextRequest) {
   const { productId } = await req.json();
 
   const existingCartItem = await prisma.cartItem.findFirst({
-    where: {  productId,  userId },
+    where: { productId, userId },
   });
   if (existingCartItem) {
     const updatedItem = await prisma.cartItem.update({
@@ -42,8 +40,8 @@ export async function POST(req: NextRequest) {
   }
   const newCartItem = await prisma.cartItem.create({
     data: {
-       userId,
-       productId,
+      userId,
+      productId,
       quantity: 1,
     },
   });

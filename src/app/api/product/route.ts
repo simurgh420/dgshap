@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
     data: result,
   });
 }
-// POST / PUT / DELETE
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();

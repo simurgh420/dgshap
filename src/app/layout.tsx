@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import { MonitorSmartphone, ShoppingCart } from 'lucide-react';
+import { MonitorSmartphone } from 'lucide-react';
 import Link from 'next/link';
 import { Toaster } from '@/components/ui/sonner';
 import { ClerkProvider } from '@clerk/nextjs';
@@ -25,7 +25,6 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  ads,
 }: Readonly<{
   children: React.ReactNode;
   ads: React.ReactNode;
@@ -38,16 +37,16 @@ export default function RootLayout({
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
           >
             <main className="flex flex-col justify-between min-h-screen ">
-              <header className="fixed flex justify-between items-center shadow-xl bg-white px-20 w-full h-20">
+              <header className="fixed top-0 left-0 flex justify-between items-center bg-white px-20 w-full h-20 shadow-[0_4px_20px_rgba(0,0,0,0.08)] z-50">
                 <div className="flex items-center gap-3">
                   <MonitorSmartphone />
                   <Link href="/" className="font-bold text-2xl">
                     DgShap
                   </Link>
                 </div>
-                <div>
-                  <Auth />
+                <div className="flex  items-center justify-center gap-3">
                   <CartDropdown />
+                  <Auth />
                 </div>
               </header>
 
@@ -55,7 +54,6 @@ export default function RootLayout({
                 {children}
                 <Toaster />
               </div>
-              <div className="my-10 mx-auto flex justify-center">{ads}</div>
               <footer className="bg-black w-full text-white flex items-center justify-center h-10 z-40">
                 <p>© 2025 [Dgshop] | ساخته شده با عشق و کد 💻❤️</p>
               </footer>

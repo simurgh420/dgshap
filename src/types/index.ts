@@ -1,5 +1,4 @@
-
-import { Prisma } from '@/generated/prisma';
+import { Prisma } from '@prisma/client';
 
 export type ProductsWithImages = Prisma.ProductGetPayload<{
   include: { images: true };
@@ -8,4 +7,3 @@ export type ProductsWithImages = Prisma.ProductGetPayload<{
 export type CartWithProduct = Prisma.CartItemGetPayload<{
   include: { product: { include: { images: true } } };
 }>;
-

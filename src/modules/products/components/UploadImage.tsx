@@ -3,7 +3,7 @@ import { Button, Input, Label } from '@/components/ui';
 import { prsimaType } from '@/lib/prisma';
 import React, { FC, useEffect, useState, useCallback } from 'react';
 import {
-  UploadImage as uploadImageService,
+  uploadImage as uploadImageService,
   fetchImages,
   deleteImage,
 } from '../services/image';
@@ -27,7 +27,7 @@ const UploadImage: FC<{ productId: string }> = ({ productId }) => {
   const handleDelete = async (imageId: string) => {
     setLoading(true);
     await deleteImage(imageId);
-    // Refresh images list after deletion
+
     await getImages();
     setLoading(false);
   };
@@ -46,7 +46,7 @@ const UploadImage: FC<{ productId: string }> = ({ productId }) => {
     formdata.append('file', file);
     formdata.append('productId', productId);
     const { data } = await uploadImageService(formdata);
-    setImages(data.images || []);
+    setImages(data?.images || []);
     setFile(null);
   };
   useEffect(() => {
@@ -100,6 +100,3 @@ const UploadImage: FC<{ productId: string }> = ({ productId }) => {
   );
 };
 export default UploadImage;
-// function updateImageList(imageId: string) {
-//   throw new Error('Function not implemented.');
-// }

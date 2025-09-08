@@ -1,6 +1,6 @@
 'use client';
 
-import { Product, ProductCategory } from '@/generated/prisma';
+import { Product, ProductCategory } from '@prisma/client';
 import {
   Input,
   Button,
@@ -23,7 +23,6 @@ import UploadImage from './UploadImage';
 import { useActionState, useEffect, useState } from 'react';
 import { upsertProduct } from '../actions';
 import { toast } from 'sonner';
-// toast('Event has been created.');
 
 const ProductForm = (props: { product: Product | null }) => {
   const { product } = props;

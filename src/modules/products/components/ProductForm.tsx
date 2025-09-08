@@ -1,6 +1,6 @@
 'use client';
 
-import { Product, ProductCategory } from '@/generated/prisma';
+import { Product, ProductCategory } from '@prisma/client';
 import {
   Input,
   Button,
