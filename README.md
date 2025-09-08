@@ -59,6 +59,7 @@ NEXT_PUBLIC_BASE_URL="http://localhost:3000"
 
 # Clerk
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_publishable_key
+
 CLERK_SECRET_KEY=your_secret_key
 
 📌 درباره
