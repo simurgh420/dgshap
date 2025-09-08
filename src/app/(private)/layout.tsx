@@ -1,7 +1,7 @@
 import React from 'react';
 
-function layout() {
-  return <div>layout</div>;
+function PrivateLayout({ children }: { children: React.ReactNode }) {
+  return <div>{children}</div>;
 }
 
-export default layout;
+export default PrivateLayout;

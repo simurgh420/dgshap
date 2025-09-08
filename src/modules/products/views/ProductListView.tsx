@@ -1,10 +1,12 @@
 import React from 'react';
 import ProductList from '../components/Productlist';
+import { getProducts } from '../services';
 
-function ProductListView() {
+async function ProductListView() {
+  const products = await getProducts();
   return (
     <div>
-      <ProductList />
+      <ProductList products={products} />
     </div>
   );
 }

@@ -6,6 +6,7 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center h-screen">
       <Banner />
       <Welcome />
+      
     </div>
   );
 }
