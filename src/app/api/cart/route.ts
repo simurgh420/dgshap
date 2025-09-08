@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 import { prisma } from '@/lib/prisma';
 import { currentUser } from '@clerk/nextjs/server';
 
