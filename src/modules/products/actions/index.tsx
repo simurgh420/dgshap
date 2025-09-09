@@ -50,7 +50,6 @@ export const upsertProduct = async (
     quantity: Number(formData.get('quantity') ?? 0),
   } as Product;
 
-  //validation
 
   const error = validationUpsertProduct(productData);
   if (error) {

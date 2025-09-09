@@ -2,15 +2,33 @@
 import * as React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
-import { DATA } from '@/modules/products/mock/product';
 import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { CartWithProduct } from '@/types';
 
 function CatalogList() {
   const params = useSearchParams();
   const id = params.get('id');
-  // id += 1;
-  //getImageByPrductId(id)
-  const images = DATA[0].images;
+  const [images, setImages] = useState<CartWithProduct[]>([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    if (!id) return;
+    const fetchProduct = async () => {
+      try {
+        const res = await axios.get(`/api/product/${id}`);
+        const data = res.data;
+        setImages(data?.images || []);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProduct();
+  }, [id]);
+
+  if (loading) return <p>loading....</p>;
   return (
     <div className="flex flex-wrap justify-center mb-4">
       {images?.map((_image: any, index) => {

@@ -10,6 +10,7 @@ import {
 import Spinner from '@/components/Spinner';
 import { CircleX } from 'lucide-react';
 import Image from 'next/image';
+import { toast } from 'sonner';
 
 const UploadImage: FC<{ productId: string }> = ({ productId }) => {
   const [file, setFile] = useState<File | null>(null);
@@ -38,7 +39,7 @@ const UploadImage: FC<{ productId: string }> = ({ productId }) => {
   }, [productId]);
   const handleUpload = async () => {
     if (!file || !productId) {
-      alert('Please select a file and product first');
+      toast.error('Please select a file and product first');
       return;
     }
 

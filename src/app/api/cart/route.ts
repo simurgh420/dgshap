@@ -20,7 +20,6 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(cartItem);
   }
   return NextResponse.json([]);
-
 }
 
 export async function POST(req: NextRequest) {
@@ -30,7 +29,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
   const { productId } = await req.json();
-  
+
   const existingCartItem = await prisma.cartItem.findFirst({
     where: { productId, userId },
   });
@@ -39,7 +38,7 @@ export async function POST(req: NextRequest) {
       where: { id: existingCartItem.id },
       data: { quantity: existingCartItem.quantity + 1 },
     });
-  
+
     return NextResponse.json(updatedItem);
   }
   const newCartItem = await prisma.cartItem.create({
@@ -49,9 +48,8 @@ export async function POST(req: NextRequest) {
       quantity: 1,
     },
   });
-  
+
   return NextResponse.json(newCartItem);
-  
 }
 
 export async function DELETE(req: NextRequest) {
@@ -61,7 +59,7 @@ export async function DELETE(req: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
   const { productId } = await req.json();
-  
+
   const existingCartItem = await prisma.cartItem.findFirst({
     where: { productId, userId },
   });
@@ -75,7 +73,7 @@ export async function DELETE(req: NextRequest) {
     const deletedItem = await prisma.cartItem.delete({
       where: { id: existingCartItem.id },
     });
-  
+
     return NextResponse.json(deletedItem);
   }
 }
