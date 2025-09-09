@@ -42,7 +42,6 @@ const UploadImage: FC<{ productId: string }> = ({ productId }) => {
       toast.error('Please select a file and product first');
       return;
     }
-
     const formdata = new FormData();
     formdata.append('file', file);
     formdata.append('productId', productId);

@@ -21,9 +21,7 @@ export async function POST(req: NextRequest) {
       },
     );
   } else {
-    // save image to anywhere // local / DB / cloud service
-
-    // Read the file data as a buffer
+ 
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
@@ -78,15 +76,9 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({
       images,
     });
-    // query string ?data=''
-    // get productImage
   }
 }
-
 export async function DELETE(req: NextRequest) {
-  //delete image from DB
-  // delete image from local host
-
   const { searchParams } = new URL(req.url);
   const imageId = searchParams.get('imageId');
   if (!imageId) {
