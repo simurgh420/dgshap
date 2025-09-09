@@ -27,7 +27,6 @@ export const fetchImages = async (productId: string) => {
 };
 
 export const deleteImage = async (imageId: string) => {
-
   try {
     const { data } = await axios.delete('/api/image', {
       params: { imageId },
