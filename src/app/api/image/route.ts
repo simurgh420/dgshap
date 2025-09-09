@@ -1,16 +1,16 @@
-import { prisma } from '@/lib/prisma';
-import { mkdir, writeFile } from 'fs/promises';
+//GET,POST,DELETE
+
 import { NextRequest, NextResponse } from 'next/server';
+import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
 import { promises as fs } from 'fs';
-export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+import { prisma } from '@/lib/prisma';
 
 export async function POST(req: NextRequest) {
   const formData = await req.formData();
   const file = formData.get('file') as File;
   const productId = formData.get('productId') as string;
+
   if (!file || !productId) {
     return NextResponse.json(
       {
@@ -41,6 +41,7 @@ export async function POST(req: NextRequest) {
     const fileUrl = `/assets/${productId}/${file.name}`;
 
     // save to DB using prisma
+
     const updatedProduct = await prisma.product.update({
       where: { id: productId },
       data: {
@@ -50,15 +51,11 @@ export async function POST(req: NextRequest) {
       },
       include: { images: true },
     });
-    return NextResponse.json(
-      {
-        message: 'File uploaded successfully',
-        product: updatedProduct,
-      },
-      {
-        status: 200,
-      },
-    );
+
+    return NextResponse.json({
+      message: 'File Uploaded Successfully',
+      data: updatedProduct?.images,
+    });
   }
 }
 
@@ -76,16 +73,20 @@ export async function GET(req: NextRequest) {
     );
   } else {
     const images = await prisma.image.findMany({
-      where: { productId: productId },
+      where: { productId },
     });
     return NextResponse.json({
       images,
     });
-
+    // query string ?data=''
+    // get productImage
   }
 }
 
 export async function DELETE(req: NextRequest) {
+  //delete image from DB
+  // delete image from local host
+
   const { searchParams } = new URL(req.url);
   const imageId = searchParams.get('imageId');
   if (!imageId) {

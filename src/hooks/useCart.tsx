@@ -1,6 +1,7 @@
 'use client';
-
+import axios from 'axios';
 import { useQueryClient, useQuery, useMutation } from '@tanstack/react-query';
+import { toast } from 'sonner';
 
 export const useCart = () => {
   const queryClient = useQueryClient();
@@ -13,48 +14,38 @@ export const useCart = () => {
   } = useQuery({
     queryKey: ['cart'],
     queryFn: async () => {
-      //get data from db
-      const res = await fetch('/api/cart');
-      if (!res.ok) throw new Error(' filed to fetch cart');
-      return res.json();
+      const res = await axios.get('/api/cart');
+      return res.data;
     },
     staleTime: 5 * 60 * 1000, // cache for 5 min
   });
   const addToCartMutation = useMutation({
     mutationFn: async (productId: string) => {
-      const res = await fetch('/api/cart', {
-        method: 'POST',
-        body: JSON.stringify({ productId }),
-        headers: { 'Content-type': 'application/json' },
-      });
-      if (!res.ok) throw new Error(' filed to Add To cart');
-      return res.json();
+      const res = await axios.post('/api/cart', { productId });
+      return res.data;
     },
+
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['cart'] });
-      alert('item is added');
+      toast.success('item is added');
     },
     onError: () => {
-      alert('Failed to Add');
+      toast.error('Failed to Add');
     },
   });
-
   const removeCartItemMutation = useMutation({
     mutationFn: async (productId: string) => {
-      const res = await fetch('/api/cart', {
-        method: 'DELETE',
-        body: JSON.stringify({ productId }),
-        headers: { 'Content-type': 'application/json' },
+      const res = await axios.delete('/api/cart', {
+        data: { productId },
       });
-      if (!res.ok) throw new Error(' filed to removed To cart');
-      return res.json();
+      return res.data;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['cart'] });
-      alert('item is added');
+      toast.success('item is removed');
     },
     onError: () => {
-      alert('Failed to Remove');
+      toast.error('Failed to Remove');
     },
   });
   return { cart, isLoading, error, addToCartMutation, removeCartItemMutation };
