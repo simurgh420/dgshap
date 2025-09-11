@@ -21,7 +21,6 @@ export async function POST(req: NextRequest) {
       },
     );
   } else {
- 
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 

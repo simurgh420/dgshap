@@ -8,8 +8,9 @@ import {
 } from '@/components/ui';
 import Link from 'next/link';
 import { GalleryThumbnails, Heart } from 'lucide-react';
+import { ProductsWithImages } from '@/types';
 
-const ProductItem = (props: { product: any }) => {
+const ProductItem = (props: { product: ProductsWithImages }) => {
   const { product } = props;
   return (
     <Card className="w-[400px] transform transition-transform duration-300 hover:scale-105">

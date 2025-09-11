@@ -7,12 +7,6 @@ export const getProducts = async () => {
   return prisma.product.findMany({ include: { images: true } });
 };
 
-export const getProductsAPI = async () => {
-  return prisma.product.findMany({
-    include: { images: true },
-  });
-};
-
 export const getProductById = async (id: string) => {
   return prisma.product.findFirst({
     where: { id },

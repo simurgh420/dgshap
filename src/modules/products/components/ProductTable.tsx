@@ -14,6 +14,7 @@ import { Edit, PlusCircle, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { deleteProduct, getProducts } from '../services';
+import { ProductsWithImages } from '@/types';
 
 const ProductTable = (props: {
   products: Awaited<ReturnType<typeof getProducts>>;
@@ -52,7 +53,7 @@ const ProductTable = (props: {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {products.map((product: any) => (
+          {products.map((product: ProductsWithImages) => (
             <TableRow key={product.id}>
               <TableCell>{product.name}</TableCell>
               <TableCell className="text-center">{product.category}</TableCell>
